@@ -6,5 +6,7 @@
 qdata.egg-info/
 build/
 dist/
+/temp/
 
 test.py
+
