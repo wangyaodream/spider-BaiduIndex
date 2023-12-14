@@ -8,5 +8,6 @@ build/
 dist/
 /temp/
 
+.idea
 test.py
 

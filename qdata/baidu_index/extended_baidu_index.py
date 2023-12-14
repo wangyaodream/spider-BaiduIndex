@@ -68,9 +68,9 @@ def get_extended_index(
         key = common.get_key(uniqid, cookies)
         for encrypt_data in encrypt_datas:
             encrypt_data['data'] = common.decrypt_func(key, encrypt_data['data'])
-            for formated_data in format_data(encrypt_data):
-                formated_data['type'] = type
-                yield formated_data
+            for formatted_data in format_data(encrypt_data):
+                formatted_data['type'] = type
+                yield formatted_data
 
 
 def format_data(data: Dict):
@@ -88,9 +88,9 @@ def format_data(data: Dict):
             index_data = index_datas[i]
         except IndexError:
             index_data = ''
-        formated_data = {
+        formatted_data = {
             'keyword': [keyword_info['name'] for keyword_info in json.loads(keyword.replace('\'', '"'))],
             'date': cur_date.strftime('%Y-%m-%d'),
             'index': index_data if index_data else '0'
         }
-        yield formated_data
+        yield formatted_data

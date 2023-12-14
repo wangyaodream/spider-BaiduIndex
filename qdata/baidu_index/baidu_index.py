@@ -5,7 +5,7 @@ import json
 from . import common
 from qdata.errors import QdataError, ErrorCode
 
-ALL_KIND = ['all', 'pc', 'wise']
+ALL_KIND = ['pc', 'wise']
 
 
 def get_search_index(
@@ -34,8 +34,8 @@ def get_search_index(
         for encrypt_data in encrypt_datas:
             for kind in ALL_KIND:
                 encrypt_data[kind]['data'] = common.decrypt_func(key, encrypt_data[kind]['data'])
-            for formated_data in format_data(encrypt_data):
-                yield formated_data
+            for formatted_data in format_data(encrypt_data):
+                yield formatted_data
 
 
 def format_data(data: Dict):
@@ -57,10 +57,10 @@ def format_data(data: Dict):
                 index_data = index_datas[i]
             except IndexError:
                 index_data = ''
-            formated_data = {
+            formatted_data = {
                 'keyword': [keyword_info['name'] for keyword_info in json.loads(keyword.replace('\'', '"'))],
                 'type': kind,
                 'date': cur_date.strftime('%Y-%m-%d'),
                 'index': index_data if index_data else '0'
             }
-            yield formated_data
+            yield formatted_data

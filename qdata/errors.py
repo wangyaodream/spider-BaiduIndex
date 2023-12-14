@@ -39,6 +39,7 @@ CODE_MSG_MAP = {
 class QdataError(Exception):
     def __init__(self, code: ErrorCode, info: str = ""):
         self.code = code
+        self.real_code = CODE_MSG_MAP.get(code)
         self.msg = CODE_MSG_MAP.get(code) + (info and f", {info}")
 
     def __str__(self):
